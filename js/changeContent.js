@@ -40,10 +40,10 @@ $(document).ready(function() {
         $('#music').addClass('active');
         $('#changedContent').load('web/music.html');
     });
-	$('#pc-games').bind('click', function() {
+	$('#photography').bind('click', function() {
         $('li').removeClass('active');
-        $('#pc-games').addClass('active');
-        $('#changedContent').load('web/pc-games.html');
+        $('#photography').addClass('active');
+        $('#changedContent').load('web/photography.html');
     });
 	$('#social-psychology').bind('click', function() {
         $('li').removeClass('active');
