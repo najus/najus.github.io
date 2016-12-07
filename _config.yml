@@ -1,7 +1,7 @@
 
 # Syntax highlighting
 markdown:            kramdown
-highlighter:         rogue
+highlighter:         rouge
 
 # Permalinks
 permalink:           /:title
