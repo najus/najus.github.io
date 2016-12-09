@@ -16,8 +16,10 @@
       {% include sidebar-toggle.html %}
     {% endif %}
 
+    {% if page.url == '/' %}
       {% include subscribe.html %}
       {% include footer.html %}
+    {% endif %}
 
     {% include footer-scripts.html %}
   </body>
