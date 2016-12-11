@@ -1,9 +1,3 @@
-    __  _______________ __ ________  __
-   /  |/  /  _/ ____/ //_// ____/\ \/ /
-  / /|_/ // // /   / ,<  / __/    \  /
- / /  / // // /___/ /| |/ /___    / /
-/_/  /_/___/\____/_/ |_/_____/   /_/
-
 The humans.txt file explains the technology, and graphic assets
 behind this site.
 
@@ -13,9 +7,14 @@ PEOPLE
 
 This Jekyll theme was hand-crafted by:
 
+Original Author:
 Vincent Chan
 Interaction design, visual design, content, web development
 http://www.twitter.com/vincentchan
+
+Edited for my personal use:
+Sujan Thapa
+http://www.twitter.com/najus
 
 _______________________________________________________________________________
 
