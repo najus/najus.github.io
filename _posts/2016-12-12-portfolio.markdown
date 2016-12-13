@@ -14,10 +14,10 @@ bgGradientOpacity: darker
 syntaxHighlighter: no
 ---
 
-**Portfolio** New Portfolio
+**Photo Portfolio**
 
 <div class="img img--fullContainer img--14xLeading" style="background-image: url({{ site.baseurl_featured_img }}guitar.jpg);"></div>
 
 Excited to launch my new photo portfolio. It is based on João Pedro Dias's (http://jpdias.me/portfolio-photo/) work on Jekyll based website. I still have a lot to change to it. It will be an incremental process. I hope to update at least once a week.
 
-Link to my portfolio: http://photos.thapasujan.com
+Link to my portfolio: (http://photos.thapasujan.com)[http://photos.thapasujan.com]
