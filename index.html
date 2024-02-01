@@ -17,6 +17,15 @@ layout: base
         <div class="tagline-container"><p>{{ site.compass.tagline }}</p></div>
         {% endif %}
     </header>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SYMRHWQ73"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+        
+          gtag('config', 'G-7SYMRHWQ73');
+    </script>
     <main>
       {% if site.compass.include_content %}
       <div class="content">
