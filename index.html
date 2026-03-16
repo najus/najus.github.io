@@ -2,35 +2,39 @@
 layout: base
 ---
 <div class="wrapper">
-    <header>
-        {% if site.compass.logo %}
-        <div class="logo-container">
-          <a class="logo" href="{{ page.baseurl }}" style="background-image: url('{{ site.baseurl }}{{ site.compass.logo }}')"></a>
-        </div>
-        {% endif %}
+    <div class="profile-card">
+        <header>
+            {% if site.compass.logo %}
+            <div class="logo-container">
+              <a class="logo" href="{{ page.baseurl }}" style="background-image: url('{{ site.baseurl }}{{ site.compass.logo }}')"></a>
+            </div>
+            {% endif %}
 
-        {% if site.compass.author %}
-        <div class="author-container"><h1>{{ site.compass.author }}</h1></div>
-        {% endif %}
+            {% if site.compass.author %}
+            <div class="author-container"><h1>{{ site.compass.author }}</h1></div>
+            {% endif %}
 
-        {% if site.compass.tagline %}
-        <div class="tagline-container"><p>{{ site.compass.tagline }}</p></div>
-        {% endif %}
-    </header>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SYMRHWQ73"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'G-7SYMRHWQ73');
-    </script>
-    <main>
-      {% if site.compass.include_content %}
-      <div class="content">
-        {% include content.html %}
-      </div>
-      {% endif %}
-    </main>
+            {% if site.compass.tagline %}
+            <div class="tagline-container"><p>{{ site.compass.tagline }}</p></div>
+            {% endif %}
+        </header>
+
+        <main>
+          {% if site.compass.include_content %}
+          <div class="content">
+            {% include content.html %}
+          </div>
+          {% endif %}
+        </main>
+    </div>
 </div>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7SYMRHWQ73"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7SYMRHWQ73');
+</script>
