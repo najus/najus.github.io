@@ -1,150 +1,176 @@
 ---
 ---
 
-$text-color: #46433A;
-$anchor-text-color: #CE534D;
-$background-color: #F1EED9;
+/* Reset & Foundation */
+* {
+    box-sizing: border-box;
+}
+
+$text-color: #E2E8F0;
+$anchor-text-color: #38BDF8;
+$background-color: #0F172A;
+$card-bg: rgba(30, 41, 59, 0.65);
+$card-border: rgba(255, 255, 255, 0.1);
 
 body {
-	font-family: 'Vollkorn', serif;
-	color: $text-color;
-	background-color: $background-color;
+    font-family: 'Inter', sans-serif;
+    color: $text-color;
+    background: $background-color;
+    /* Immersive dark gradient */
+    background: radial-gradient(circle at top right, #1e1b4b, #0f172a 50%, #020617);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-header,
-main {
-	padding: 0 20px;
-}
-
-/*** wrapper div for both header and main ***/
 .wrapper {
-	margin-top: 10%;
+    width: 100%;
+    max-width: 520px;
+    padding: 24px;
+    animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/*** anchor tags ***/
-a:link,
-a:visited,
-a:hover,
-a:active {
-	color: $anchor-text-color;
-	text-decoration: none;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Glassmorphism Profile Card */
+.profile-card {
+    background: $card-bg;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid $card-border;
+    border-radius: 28px;
+    padding: 48px 36px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+/* Base links override */
+a {
+    color: $anchor-text-color;
+    text-decoration: none;
+    transition: color 0.2s;
 }
 
 a:hover {
-	text-decoration: underline;
+    color: #7DD3FC;
 }
 
-
-/*** main content list ***/
-.main-list-item {
-	font-weight: bold;
-	font-size: 1.2em;
-	margin: 0.8em 0;
-}
-
-/* override the left margin added by font awesome for the main content list,
-since it must be aligned with the content */
-.fa-ul.main-list {
-	margin-left: 0;
-}
-
-/* list icons */
-.main-list-item-icon {
-	width: 36px;
-	color: $text-color;
-}
-
-/*** logo ***/
+/* Header & Typography */
 .logo-container {
-	text-align: center;
+    margin-bottom: 24px;
 }
 
 .logo {
-	width: 96px;
-	height: 96px;
-	display: inline-block;
-	background-size: cover;
-	border-radius: 50%;
-	-moz-border-radius: 50%;
-	border: 2px solid $background-color;
-	box-shadow: 0 0 0 3px $text-color;
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
 }
 
-/*** author ***/
+.logo:hover {
+    transform: scale(1.06) rotate(3deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
 .author-container h1 {
-	font-size: 2.8em;
-	margin-top: 0;
-	margin-bottom: 0;
-	text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #FFFFFF;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-/*** tagline ***/
 .tagline-container p {
-	font-size: 1.3em;
-	text-align: center;
-	margin-bottom: 2em;
+    font-size: 1.15rem;
+    color: #94A3B8;
+    margin: 0 0 32px 0;
+    font-weight: 400;
 }
 
-/******/
-hr {
-	border: 0;
-	height: 1px;
-	background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
-	background-image: -moz-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
-	background-image: -ms-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
-	background-image: -o-linear-gradient(left, rgba(0,0,0,0), $text-color, rgba(0,0,0,0));
+/* Links Section */
+.content {
+    margin-top: 24px;
 }
 
-/*** footer ***/
-footer {
-	position: fixed;
-	bottom: 0;
-	right: 0;
-	height: 20px;
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.poweredby {
-	font-family: "Arial Narrow", Arial;
-	font-size: 0.6em;
-	line-height: 0.6em;
-	padding: 0 5px;
+.link-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    color: #F8FAFC;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
 }
 
-/*** media queries ***/
-/* X-Small devices (phones, 480px and up) */
-@media (min-width: 480px) {
-	/* wrapper stays 480px wide past 480px wide and is kept centered */
-	.wrapper {
-		width: 480px;
-		margin: 10% auto 0 auto;
-	}
+.link-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
 }
 
-/* All other devices (768px and up) */
-@media (min-width: 768px) {
-	/* past 768px the layout is changed and the wrapper has a fixed width of 680px
-	to accomodate both the header column and the content column */
-	.wrapper {
-		width: 680px;
-	}
+.link-item:hover::before {
+    transform: translateX(100%);
+}
 
-	/* the header column stays left and has a dynamic width with all contents
-	aligned right */
-	header {
-		float: left;
-		width: 46%;
-		text-align: right;
-	}
+.link-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -6px rgba(0,0,0,0.4);
+    color: #FFFFFF;
+}
 
-	.author-container h1,
-	.logo-container,
-	.tagline-container p {
-		text-align: right;
-	}
+.link-icon {
+    font-size: 1.35rem;
+    color: #38BDF8; /* highlight color */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.2s;
+}
 
-	main {
-		width: 46%;
-		margin-left: 54%;
-		padding: 0;
-	}
+.link-item:hover .link-icon {
+    transform: scale(1.15);
+    color: #7DD3FC;
+}
+
+.link-text {
+    font-size: 1.05rem;
+    letter-spacing: 0.3px;
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+    .profile-card {
+        padding: 56px 48px;
+    }
+    .author-container h1 {
+        font-size: 2.75rem;
+    }
 }
