@@ -38,11 +38,16 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:2px;border-radius:
 .brand .dots i{width:6px;height:6px;border-radius:50%;display:block}
 .brand .dots .b{background:var(--flagblue)}
 .brand .dots .c{background:var(--crimson)}
-.site-nav{display:flex;gap:18px}
-.site-nav a{
-  color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;transition:color .15s}
-.site-nav a:hover{color:var(--ink)}
-@media (max-width:520px){.site-nav a:nth-child(2){display:none}}
+.photos{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.photos a{display:block;border-radius:10px;overflow:hidden;line-height:0}
+.photos img{
+  width:100%;aspect-ratio:1;object-fit:cover;display:block;
+  transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.photos a:hover img{transform:scale(1.045)}
+.more{margin:12px 0 0;font-size:14px}
+.more a{color:var(--muted);text-decoration:none;font-weight:500}
+.more a:hover{color:var(--evergreen)}
 
 main{
   max-width:600px;margin:0 auto;padding:44px 24px 64px;
