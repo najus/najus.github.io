@@ -2,5 +2,5 @@
 Personal homepage of Sujan Thapa — software engineer & amateur photographer, Seattle.
 
 Plain static HTML/CSS/JS (no build step), served by GitHub Pages.
-Design: warm-paper editorial style shared with the
+Design: minimalist editorial, PNW × Nepali palette (fog, evergreen, slate, crimson). Sibling project:
 [Nepal History Timeline](https://sujanthapa.com/NepalHistoryTimeline/).
