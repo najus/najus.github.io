@@ -1,0 +1,104 @@
+/* sujanthapa.com — modern editorial design (2026), shared language with the Nepal History Timeline */
+:root{
+  --paper:#faf6ef; --card:#fffdf8; --ink:#1b1712; --muted:#6f6455; --faint:#9a8d7a;
+  --line:#e7ddcb; --blue:#003893; --crimson:#c8102e; --green:#0e7a5f;
+  --shadow:0 10px 30px rgba(27,23,18,.08), 0 2px 6px rgba(27,23,18,.06);
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Inter','Noto Sans Devanagari',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--blue),var(--crimson));z-index:60}
+main{max-width:1060px;margin:0 auto;padding:0 24px}
+
+.topbar{
+  max-width:1060px;margin:0 auto;padding:22px 24px 0;
+  display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{font-family:'Noto Sans Devanagari','Inter',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.01em}
+.brand-dot{color:var(--crimson)}
+.top-clock{color:var(--muted);font-size:.9rem;font-weight:500;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:#22a06b;display:inline-block;box-shadow:0 0 0 4px rgba(34,160,107,.15)}
+
+/* Hero */
+.hero{
+  display:grid;grid-template-columns:1fr;gap:28px;align-items:center;
+  padding:52px 0 10px;animation:rise .6s cubic-bezier(.2,.8,.2,1)}
+@media (min-width:860px){.hero{grid-template-columns:1.5fr .9fr;padding:70px 0 16px}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important} html{scroll-behavior:auto}}
+.overline{
+  margin:0 0 12px;color:var(--crimson);font-weight:700;font-size:.8rem;
+  letter-spacing:.22em;text-transform:uppercase}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:900;letter-spacing:-.015em;
+  font-size:clamp(3rem,9vw,5.4rem);line-height:.98;margin:0}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.lede{font-size:clamp(1.02rem,2.2vw,1.22rem);line-height:1.65;color:var(--muted);max-width:52ch;margin:20px 0 0}
+.cta{display:flex;gap:10px;margin-top:26px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border-radius:999px;
+  font-size:.94rem;font-weight:600;text-decoration:none;border:1px solid var(--line);
+  color:var(--ink);background:transparent;transition:transform .15s,box-shadow .2s}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:transparent}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.socials{display:flex;gap:6px;margin-top:22px}
+.socials a{
+  width:40px;height:40px;display:grid;place-items:center;border-radius:50%;
+  color:var(--muted);border:1px solid transparent;transition:all .2s;text-decoration:none}
+.socials a:hover{color:var(--ink);border-color:var(--line);background:var(--card)}
+.socials svg{width:19px;height:19px;fill:currentColor}
+
+.hero-photo{text-align:center}
+.avatar{
+  width:min(300px,64vw);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;
+  border:1px solid var(--line);box-shadow:var(--shadow);cursor:pointer;user-select:none;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1.4)}
+.avatar:hover{transform:scale(1.02)}
+.avatar.spin{transform:rotate(360deg) scale(1.05)}
+.photo-cap{color:var(--faint);font-size:.86rem;margin:12px 0 0}
+
+/* Selected work */
+.work{margin-top:56px;border-top:1px solid var(--line);padding-top:30px}
+.kicker{font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--crimson);margin:0}
+.work h2{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(1.7rem,4vw,2.3rem);margin:8px 0 20px}
+.cards{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:860px){.cards{grid-template-columns:repeat(3,1fr)}}
+.card{
+  display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:22px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px)}
+.tag{
+  align-self:flex-start;color:#fff;background:var(--tag,var(--blue));
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 10px;border-radius:999px}
+.card h3{font-family:'Fraunces',serif;font-size:1.3rem;margin:4px 0 0;line-height:1.2}
+.card p{color:var(--muted);line-height:1.6;font-size:.94rem;margin:0;flex:1}
+.go{font-weight:600;font-size:.9rem;color:var(--blue)}
+.go .arrow{display:inline-block;transition:transform .2s}
+.card:hover .go .arrow{transform:translateX(4px)}
+
+footer{
+  margin-top:64px;border-top:1px solid var(--line);padding:22px 0 42px;
+  color:var(--faint);font-size:.86rem;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+footer .sep{opacity:.6}
+
+#toast{
+  position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;
+  background:var(--ink);color:var(--paper);padding:11px 18px;border-radius:999px;
+  font-size:.9rem;font-weight:600;pointer-events:none;transition:all .35s;z-index:70;
+  box-shadow:0 12px 32px rgba(0,0,0,.3);max-width:88vw;text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:65}
+#flash.go{animation:flash .45s ease-out}
+@keyframes flash{0%{opacity:.9}100%{opacity:0}}
+.yeti{position:fixed;bottom:14px;left:-80px;font-size:44px;z-index:60;pointer-events:none}
+.yeti.walk{animation:walk 7s linear forwards}
+@keyframes walk{to{transform:translateX(calc(100vw + 160px))}}
+.snow{position:fixed;top:-10px;z-index:59;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(105vh)}}
