@@ -6,7 +6,7 @@
 <title>Sujan Thapa — Software Engineer &amp; Photographer, Seattle</title>
 <meta name="description" content="Sujan Thapa is a software engineer in the Seattle area who builds for the web, photographs the Pacific Northwest, and makes things for Nepal — including the Nepal History Timeline and Jhappad.">
 <meta name="author" content="Sujan Thapa">
-<meta name="theme-color" content="#f4f6f1">
+<meta name="theme-color" content="#f8f9f6">
 <link rel="canonical" href="https://sujanthapa.com/">
 <meta property="og:type" content="profile">
 <meta property="og:title" content="Sujan Thapa — Software Engineer &amp; Photographer">
@@ -22,8 +22,8 @@
 <link rel="apple-touch-icon" href="/images/avatar.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css?v=5">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SYMRHWQ73"></script>
 <script>
@@ -34,10 +34,24 @@
 </script>
 </head>
 <body>
+
+<header class="site-head">
+  <a class="brand" href="/">
+    <img class="avatar" id="avatar" src="/images/avatar.jpg" alt="Portrait of Sujan Thapa" width="480" height="480" title="Psst — click me a few times">
+    <span class="name">Sujan Thapa</span>
+    <span class="dots" aria-hidden="true"><i class="b"></i><i class="c"></i></span>
+  </a>
+  <nav class="site-nav" aria-label="Site">
+    <a href="https://sujanthapa.com/NepalHistoryTimeline/">Timeline</a>
+    <a href="https://jhappad.com" target="_blank" rel="noopener">Jhappad</a>
+    <a href="https://photos.sujanthapa.com/" target="_blank" rel="noopener">Photos</a>
+    <a href="mailto:najussujan@gmail.com">Email</a>
+  </nav>
+</header>
+
 <main>
-  <img class="avatar" id="avatar" src="/images/avatar.jpg" alt="Portrait of Sujan Thapa" width="480" height="480" title="Psst — click me a few times">
-  <h1>Sujan <em>Thapa</em></h1>
-  <p class="bio">Software engineer in Seattle, amateur photographer around the Pacific Northwest. Kathmandu-born — I build for the web, and for Nepal: lately the <a href="https://sujanthapa.com/NepalHistoryTimeline/">Nepal History Timeline</a> and <a href="https://jhappad.com">Jhappad</a>.</p>
+  <p class="intro">I'm a <strong>software engineer</strong> in Seattle, originally from Kathmandu. I build software for the web, and <a href="https://photos.sujanthapa.com/" target="_blank" rel="noopener">photograph the Pacific Northwest</a> in my spare time.</p>
+  <p class="intro">My side projects are mostly for Nepal and its diaspora — an interactive <a href="https://sujanthapa.com/NepalHistoryTimeline/">history of Nepal</a>, and <a href="https://jhappad.com" target="_blank" rel="noopener">Jhappad</a>, a collective taking on corruption back home.</p>
 
   <nav class="socials" aria-label="Profiles">
     <a href="https://github.com/najus" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 1.27.32.79.94.79 1.9v2.82c0 .3.21.67.8.55A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg></a>
@@ -49,13 +63,16 @@
 
   <section aria-label="Projects">
     <h2>Projects</h2>
-    <a class="prow" href="https://sujanthapa.com/NepalHistoryTimeline/" target="_blank" rel="noopener"><span class="t">Nepal History Timeline</span> <span class="d">— Nepal's history, 1743 to today, in English and नेपाली</span></a>
-    <a class="prow" href="https://jhappad.com" target="_blank" rel="noopener"><span class="t">Jhappad</span> <span class="d">— a collective slap to corruption in Nepal</span></a>
-    <a class="prow" href="https://photos.sujanthapa.com/" target="_blank" rel="noopener"><span class="t">Photography</span> <span class="d">— Pacific Northwest, shot on Fujifilm</span></a>
+    <ul class="list">
+      <li><a href="https://sujanthapa.com/NepalHistoryTimeline/" target="_blank" rel="noopener"><span class="t">Nepal History Timeline <span class="d">— Nepal's history, 1743 to today, in English and नेपाली</span></span><span class="meta">History</span></a></li>
+      <li><a href="https://jhappad.com" target="_blank" rel="noopener"><span class="t">Jhappad <span class="d">— a collective slap to corruption in Nepal</span></span><span class="meta">Civic</span></a></li>
+      <li><a href="https://photos.sujanthapa.com/" target="_blank" rel="noopener"><span class="t">Photography <span class="d">— Pacific Northwest landscapes and street</span></span><span class="meta">Fujifilm</span></a></li>
+    </ul>
   </section>
 
   <footer>
-    © <span id="yr">2026</span> Sujan Thapa · Seattle <span class="t" id="clockSea">—</span> · काठमाडौं <span class="t" id="clockKtm">—</span>
+    <span>© <span id="yr">2026</span> Sujan Thapa</span>
+    <span>Seattle <span class="t" id="clockSea">—</span> · काठमाडौं <span class="t" id="clockKtm">—</span></span>
     <!-- There are a few secrets on this page. The console knows one. -->
   </footer>
 </main>
@@ -85,7 +102,8 @@
   }
 
   var clicks = 0, avatar = document.getElementById('avatar');
-  avatar.addEventListener('click', function(){
+  avatar.addEventListener('click', function(e){
+    e.preventDefault();
     clicks++;
     if (clicks >= 5) {
       clicks = 0;
