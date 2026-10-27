@@ -32,10 +32,32 @@ UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit
 COUNT = 6
 
 
+BROWSER_HEADERS = [
+    "-H", "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+          "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36",
+    "-H", "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,"
+          "image/avif,image/webp,*/*;q=0.8",
+    "-H", "Accept-Language: en-US,en;q=0.9",
+    "-H", "Sec-Fetch-Dest: document",
+    "-H", "Sec-Fetch-Mode: navigate",
+    "-H", "Sec-Fetch-Site: none",
+]
+
+
 def fetch(url: str) -> bytes:
-    req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=40) as r:
-        return r.read()
+    """Fetch via curl (VSCO's CDN rejects plain urllib TLS fingerprints
+    with 403, notably from datacenter IPs like GitHub Actions runners)."""
+    try:
+        r = subprocess.run(
+            ["curl", "-sS", "-L", "--compressed", "--max-time", "40",
+             *BROWSER_HEADERS, url],
+            capture_output=True, check=True, timeout=60,
+        )
+        return r.stdout
+    except FileNotFoundError:
+        req = urllib.request.Request(url, headers=UA)
+        with urllib.request.urlopen(req, timeout=40) as r:
+            return r.read()
 
 
 def latest_posts() -> list[dict]:
