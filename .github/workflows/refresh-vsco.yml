@@ -1,0 +1,39 @@
+name: Refresh VSCO photos
+
+# Keeps the homepage Photos grid in sync with the latest 6 posts on
+# vsco.co/najus. Runs tools/refresh_vsco.py, which commits + pushes
+# only when the latest-6 set has actually changed.
+
+on:
+  schedule:
+    # 17:45 UTC daily ≈ 9:45 AM PDT / 8:45 AM PST (GitHub cron is UTC-only)
+    - cron: "45 17 * * *"
+  workflow_dispatch: # allow manual runs from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-vsco
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: pip install Pillow
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Refresh photos from VSCO
+        run: python3 tools/refresh_vsco.py
