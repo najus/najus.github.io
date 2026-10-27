@@ -34,10 +34,10 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:2px;border-radius:
   transition:transform .5s cubic-bezier(.2,.8,.2,1.4)}
 .brand .avatar.spin{transform:rotate(360deg) scale(1.15)}
 .brand .name{font-weight:600;font-size:15px;letter-spacing:-.01em}
-.brand .dots{display:inline-flex;gap:3px;margin-left:2px}
-.brand .dots i{width:6px;height:6px;border-radius:50%;display:block}
-.brand .dots .b{background:var(--flagblue)}
-.brand .dots .c{background:var(--crimson)}
+.brand .flags{display:inline-flex;align-items:center;gap:6px;margin-left:3px}
+.brand .flags svg{display:block;width:auto;filter:saturate(.92)}
+.brand .flags .np{height:17px}
+.brand .flags .us{height:13.5px}
 .photos{
   display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
 .photos a{display:block;border-radius:10px;overflow:hidden;line-height:0}
