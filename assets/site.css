@@ -40,11 +40,19 @@ a:focus-visible{outline:2px solid var(--slate);outline-offset:2px;border-radius:
 .brand .flags .us{height:13.5px}
 .photos{
   display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-.photos a{display:block;border-radius:10px;overflow:hidden;line-height:0}
+.photos a{
+  display:block;border-radius:10px;overflow:hidden;line-height:0;
+  transition:box-shadow .35s}
 .photos img{
   width:100%;aspect-ratio:1;object-fit:cover;display:block;
   transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.photos a:hover{box-shadow:0 12px 30px -8px var(--c,rgba(21,34,25,.35))}
 .photos a:hover img{transform:scale(1.045)}
+.colorbar{display:flex;gap:3px;margin-top:8px}
+.colorbar span{
+  flex:1;height:10px;border-radius:99px;display:block;
+  transition:transform .2s}
+.colorbar span:hover{transform:scaleY(1.45)}
 .more{margin:12px 0 0;font-size:14px}
 .more a{color:var(--muted);text-decoration:none;font-weight:500}
 .more a:hover{color:var(--evergreen)}

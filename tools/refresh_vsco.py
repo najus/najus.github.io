@@ -18,10 +18,12 @@ Flags:
   --dry-run   fetch + compare only, report NOCHANGE / WOULD-CHANGE
   --simulate  do everything except git commit/push (for testing on a copy)
 """
+import colorsys
 import re
 import subprocess
 import sys
 import urllib.request
+from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -112,14 +114,44 @@ def download_optimized(post: dict, dest: Path) -> None:
     im.save(dest, quality=76, progressive=True, optimize=True)
 
 
+def dominant_color(path: Path) -> tuple[str, float, float]:
+    """Most-common colour of the photo (same idea as the photos site's
+    Colour story). Returns (hex, hue, saturation)."""
+    from PIL import Image
+
+    im = Image.open(path).convert("RGB").resize((72, 72))
+    q = im.quantize(colors=6)
+    pal = q.getpalette()
+    idx, _ = Counter(q.getdata()).most_common(1)[0]
+    r, g, b = pal[idx * 3: idx * 3 + 3]
+    h, s, _v = colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+    return f"#{r:02x}{g:02x}{b:02x}", h, s
+
+
+def display_order(posts: list[dict]) -> list[dict]:
+    """Colour-story order: hue flow (red wraps to the front), neutrals last."""
+    def key(p: dict):
+        _hex, h, s = p["color"]
+        wrapped = h if h <= 0.95 else h - 1.0
+        return (0, wrapped) if s >= 0.12 else (1, wrapped)
+
+    return sorted(posts, key=key)
+
+
 def build_block(posts: list[dict], old_alts: dict[str, str]) -> str:
+    ordered = display_order(posts)
     lines = ['    <div class="photos">']
-    for i, p in enumerate(posts, 1):
+    for p in ordered:
         alt = old_alts.get(p["hash"], "Photo by Sujan Thapa on VSCO")
         lines.append(
-            f'      <a href="{p["post"]}" target="_blank" rel="noopener">'
-            f'<img src="/images/photos/vsco-{i}.jpg" alt="{alt}" loading="lazy"></a>'
+            f'      <a href="{p["post"]}" target="_blank" rel="noopener" '
+            f'style="--c:{p["color"][0]}">'
+            f'<img src="/images/photos/vsco-{p["file"]}.jpg" alt="{alt}" loading="lazy"></a>'
         )
+    lines.append("    </div>")
+    lines.append('    <div class="colorbar" aria-hidden="true">')
+    for p in ordered:
+        lines.append(f'      <span style="background:{p["color"][0]}"></span>')
     lines.append("    </div>")
     return "\n".join(lines)
 
@@ -137,7 +169,8 @@ def main() -> int:
         html = INDEX.read_text(encoding="utf-8")
         cur_hashes, old_alts = current_grid(html)
         new_hashes = [p["hash"] for p in posts]
-        if cur_hashes == new_hashes:
+        # The grid displays in colour order, so change detection is by set.
+        if set(cur_hashes) == set(new_hashes):
             print("NOCHANGE")
             return 0
         if dry:
@@ -145,7 +178,10 @@ def main() -> int:
             return 0
         PHOTOS_DIR.mkdir(parents=True, exist_ok=True)
         for i, p in enumerate(posts, 1):
-            download_optimized(p, PHOTOS_DIR / f"vsco-{i}.jpg")
+            p["file"] = i
+            dest = PHOTOS_DIR / f"vsco-{i}.jpg"
+            download_optimized(p, dest)
+            p["color"] = dominant_color(dest)
         block = build_block(posts, old_alts)
         new_html = re.sub(
             r"(<!-- PHOTOS:START.*?-->).*?(<!-- PHOTOS:END -->)",
